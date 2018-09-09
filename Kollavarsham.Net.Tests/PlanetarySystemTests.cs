@@ -5,19 +5,17 @@ using Xunit;
 
 namespace Kollavarsham.Net.Tests
 {
-    public class EmptyConstructor
+    public class PlanetarySystemTests
     {
-        private readonly Planets _planets;
+        private Planets _planets;
+        private Yuga _yuga;
 
-        public EmptyConstructor()
+        [Fact]
+        public void EmptyConstructor_Should_Set_the_YugaRotation_Values_Correctly()
         {
             var planetarySystem = new PlanetarySystem.PlanetarySystem();
             _planets = planetarySystem.Planets;
-        }
 
-        [Fact]
-        public void Should_Set_the_YugaRotation_Values_Correctly()
-        {
             _planets.Star.YugaRotation.Should().Be(1582237800);
             _planets.Sun.YugaRotation.Should().Be(4320000);
             _planets.Moon.YugaRotation.Should().Be(57753336);
@@ -29,23 +27,14 @@ namespace Kollavarsham.Net.Tests
             _planets.Candrocca.YugaRotation.Should().Be(488219);
             _planets.Rahu.YugaRotation.Should().Be(-232226);
         }
-    }
-
-    public class ConstructorWithSuryaSiddanta
-    {
-        private readonly Planets _planets;
-        private readonly Yuga _yuga;
-
-        public ConstructorWithSuryaSiddanta()
-        {
-            var planetarySystem = new PlanetarySystem.PlanetarySystem();
-            _planets = planetarySystem.Planets;
-            _yuga = planetarySystem.Yuga;
-        }
 
         [Fact]
-        public void Should_Set_Up_The_Planetary_Constants_Correctly()
+        public void ConstructorWithSuryaSiddanta_Should_Set_Up_The_Planetary_Constants_Correctly()
         {
+            var planetarySystem = new PlanetarySystem.PlanetarySystem(System.SuryaSiddhanta);
+            _planets = planetarySystem.Planets;
+            _yuga = planetarySystem.Yuga;
+
             _planets.Star.YugaRotation.Should().Be(1582237800);
             _planets.Sun.YugaRotation.Should().Be(4320000);
             _planets.Moon.YugaRotation.Should().Be(57753336);
@@ -118,23 +107,14 @@ namespace Kollavarsham.Net.Tests
             _yuga.Tithi.Should().Be(1603000080);
             _yuga.Ksayadina.Should().Be(25082280);
         }
-    }
 
-    public class ConstructorWithPancasiddantika
-    {
-        private readonly Planets _planets;
-        private readonly Yuga _yuga;
-
-        public ConstructorWithPancasiddantika()
+        [Fact]
+        public void ConstructorWithPancasiddantika_Should_Set_Up_The_Planetary_Constants_Correctly()
         {
             var planetarySystem = new PlanetarySystem.PlanetarySystem(System.Pancasiddhantika);
             _planets = planetarySystem.Planets;
             _yuga = planetarySystem.Yuga;
-        }
 
-        [Fact]
-        public void Should_Set_Up_The_Planetary_Constants_Correctly()
-        {
             _planets.Star.YugaRotation.Should().Be(1582237828);
             _planets.Sun.YugaRotation.Should().Be(4320000);
             _planets.Moon.YugaRotation.Should().Be(57753336);

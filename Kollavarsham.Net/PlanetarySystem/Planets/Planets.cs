@@ -1,4 +1,6 @@
-﻿namespace Kollavarsham.Net.PlanetarySystem.Planets
+﻿using System;
+
+namespace Kollavarsham.Net.PlanetarySystem.Planets
 {
     public class Planets
     {
@@ -12,6 +14,39 @@
         public Saturn Saturn { get; } = new Saturn();
         public Candrocca Candrocca { get; } = new Candrocca();
         public Rahu Rahu { get; } = new Rahu();
+
+        public BasePlanet this[Planet planet]
+        {
+            get
+            {
+                switch (planet)
+                {
+                    case Planet.Star:
+                        return Star;
+                    case Planet.Sun:
+                        return Sun;
+                    case Planet.Moon:
+                        return Moon;
+                    case Planet.Mercury:
+                        return Mercury;
+                    case Planet.Venus:
+                        return Venus;
+                    case Planet.Mars:
+                        return Mars;
+                    case Planet.Jupiter:
+                        return Jupiter;
+                    case Planet.Saturn:
+                        return Saturn;
+                    case Planet.Candrocca:
+                        return Candrocca;
+                    case Planet.Rahu:
+                        return Rahu;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(planet), planet,
+                            $"{planet} is not a valid {nameof(Planet)}.");
+                }
+            }
+        }
 
         public void InitializeYugaRotations(System system)
         {
@@ -30,11 +65,12 @@
             Saturn.YugaRotation = isSuryaSiddhantaSystem ? 146564 : 146568;
             Candrocca.YugaRotation = isSuryaSiddhantaSystem ? 488219 : 488203;
             Rahu.YugaRotation = isSuryaSiddhantaSystem ? -232226 : -232238;
-            
+
             InitializePlanetaryConstants();
         }
 
-        private void InitializePlanetaryConstants() {
+        private void InitializePlanetaryConstants()
+        {
             // star
             Star.Rotation = 0;
             Star.Sighra = 0;
@@ -105,6 +141,5 @@
             Rahu.MandaCircumference = 0;
             Rahu.SighraCircumference = 0;
         }
-        
     }
 }
