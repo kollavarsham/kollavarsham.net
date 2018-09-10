@@ -11,5 +11,5 @@ before_build:
 build_script:
   - cmd: dotnet build
 test_script:
-  - cmd: dotnet test --logger:Appveyor --logger:"console;verbosity=detailed" Kollavarsham.Net.Tests/Kollavarsham.Net.Tests.csproj
+  - cmd: dotnet test --logger:Appveyor Kollavarsham.Net.Tests/Kollavarsham.Net.Tests.csproj
 deploy: off
