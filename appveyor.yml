@@ -1,0 +1,15 @@
+version: '1.0.{build}'
+image: Visual Studio 2017
+branches:
+  only:
+  - master
+init:
+  - cmd: git config --global core.autocrlf true
+before_build:
+  - cmd: dotnet --version
+  - cmd: dotnet restore
+build_script:
+  - cmd: dotnet build
+test_script:
+  - cmd: dotnet test --logger:Appveyor --logger:"console;verbosity=detailed" Kollavarsham.Net.Tests/Kollavarsham.Net.Tests.csproj
+deploy: off
