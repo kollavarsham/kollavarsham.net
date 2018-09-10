@@ -1,6 +1,7 @@
 # [kollavarsham](https://kollavarsham.org)
 
-[![Build Status](https://travis-ci.org/kollavarsham/kollavarsham.net.svg?branch=master)](https://travis-ci.org/kollavarsham/kollavarsham.net)
+[![Build status](https://ci.appveyor.com/api/projects/status/m45tl88vrsjdmkq7/branch/master?svg=true)](https://ci.appveyor.com/project/floydpink/kollavarsham-net/branch/master)
+ [![Build Status](https://travis-ci.org/kollavarsham/kollavarsham.net.svg?branch=master)](https://travis-ci.org/kollavarsham/kollavarsham.net) 
 
 > Convert Gregorian date to Kollavarsham date and vice versa
 
