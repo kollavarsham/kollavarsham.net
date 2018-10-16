@@ -363,5 +363,92 @@ namespace Kollavarsham.Net.Tests
             _celestial.GetConjunction(1867520).Should().BeCloseTo(308.537344813799, MathHelper.Epsilon);
             _celestial.GetConjunction(1844848).Should().BeCloseTo(274.457623345507, MathHelper.Epsilon);
         }
+
+        [Fact]
+        public void GetDaylightEquation_Should_Return_Correct_Results()
+        {
+            _celestial.GetDaylightEquation(2018, 10.5, 1710693).Should()
+                .BeCloseTo(-0.005420561412729585, MathHelper.Epsilon);
+            _celestial.GetDaylightEquation(2018, 10.5, 1710694).Should()
+                .BeCloseTo(-0.005614522183274197, MathHelper.Epsilon);
+            _celestial.GetDaylightEquation(2018, 10.5, 1710695).Should()
+                .BeCloseTo(-0.005807467501313135, MathHelper.Epsilon);
+            _celestial.GetDaylightEquation(2018, 10.5, 1710696).Should()
+                .BeCloseTo(-0.005999348448389154, MathHelper.Epsilon);
+            _celestial.GetDaylightEquation(2018, 10.5, 1772755).Should()
+                .BeCloseTo(0.00107770027863962, MathHelper.Epsilon);
+            _celestial.GetDaylightEquation(2018, 10.5, 1772756).Should()
+                .BeCloseTo(0.0008716564611006835, MathHelper.Epsilon);
+            _celestial.GetDaylightEquation(2018, 10.5, 1772757).Should()
+                .BeCloseTo(0.0006654834899484697, MathHelper.Epsilon);
+            _celestial.GetDaylightEquation(2018, 10.5, 1132992).Should()
+                .BeCloseTo(-0.003588875611065327, MathHelper.Epsilon);
+            _celestial.GetDaylightEquation(2018, 10.5, 1868191).Should()
+                .BeCloseTo(-0.013036431706478948, MathHelper.Epsilon);
+            _celestial.GetDaylightEquation(2018, 10.5, 1868192).Should()
+                .BeCloseTo(-0.013001996328907502, MathHelper.Epsilon);
+            _celestial.GetDaylightEquation(2018, 10.5, 1867492).Should()
+                .BeCloseTo(-0.010004131830564776, MathHelper.Epsilon);
+            _celestial.GetDaylightEquation(2018, 10.5, 1867886).Should()
+                .BeCloseTo(-0.004905444657490358, MathHelper.Epsilon);
+            _celestial.GetDaylightEquation(2018, 10.5, 1867520).Should()
+                .BeCloseTo(-0.005051116361050748, MathHelper.Epsilon);
+            _celestial.GetDaylightEquation(2018, 10.5, 1844848).Should()
+                .BeCloseTo(-0.009693442247709978, MathHelper.Epsilon);
+        }
+
+        [Fact]
+        public void GetSunriseTime_Should_Return_Correct_Results()
+        {
+            var sunriseTime = Celestial.GetSunriseTime(0.0, 0.0);
+            sunriseTime.Hour.Should().Be(0);
+            sunriseTime.Minute.Should().Be(0);
+
+            sunriseTime = Celestial.GetSunriseTime(0.14583333333333, 0.0);
+            sunriseTime.Hour.Should().Be(3);
+            sunriseTime.Minute.Should().Be(29);
+
+            sunriseTime = Celestial.GetSunriseTime(0.25, 0.0);
+            sunriseTime.Hour.Should().Be(6);
+            sunriseTime.Minute.Should().Be(0);
+
+            sunriseTime = Celestial.GetSunriseTime(0.48958333333333, 0.0);
+            sunriseTime.Hour.Should().Be(11);
+            sunriseTime.Minute.Should().Be(44);
+
+            sunriseTime = Celestial.GetSunriseTime(0.5, 0.0);
+            sunriseTime.Hour.Should().Be(12);
+            sunriseTime.Minute.Should().Be(0);
+
+            sunriseTime = Celestial.GetSunriseTime(0.68402777777778, 0.0);
+            sunriseTime.Hour.Should().Be(16);
+            sunriseTime.Minute.Should().Be(25);
+
+            sunriseTime = Celestial.GetSunriseTime(0.75, 0.0);
+            sunriseTime.Hour.Should().Be(18);
+            sunriseTime.Minute.Should().Be(0);
+        }
+
+        [Fact]
+        public void GetLastConjunctionLongitude_Should_Return_Results()
+        {
+            _celestial.GetLastConjunctionLongitude(1710693, 8.54483099478396).Should()
+                .BeCloseTo(165.6082302520299, MathHelper.Epsilon);
+            _celestial.GetLastConjunctionLongitude(1810694, 9.74443045978396).Should()
+                .BeCloseTo(106.68697671647189, MathHelper.Epsilon);
+            _celestial.GetLastConjunctionLongitude(1910695, 10.54899456473964).Should()
+                .BeCloseTo(21.008813423509878, MathHelper.Epsilon);
+        }
+
+        [Fact]
+        public void GetNextConjunctionLongitude_Should_Return_Results()
+        {
+            _celestial.GetNextConjunctionLongitude(1710693, 8.54483099478396).Should()
+                .BeCloseTo(195.2209295926904, MathHelper.Epsilon);
+            _celestial.GetNextConjunctionLongitude(1810694, 9.74443045978396).Should()
+                .BeCloseTo(135.03288802411012, MathHelper.Epsilon);
+            _celestial.GetNextConjunctionLongitude(1910695, 10.54899456473964).Should()
+                .BeCloseTo(49.155790280363135, MathHelper.Epsilon);
+        }
     }
 }

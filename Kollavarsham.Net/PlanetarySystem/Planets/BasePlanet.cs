@@ -12,7 +12,7 @@
         public int YugaRotation { get; set; }
         public int Rotation { get; set; }
         public int Sighra { get; set; }
-        public int MeanPosition { get; set; }
+        public double MeanPosition { get; set; }
         public double Apogee { get; set; }
         public double MandaCircumference { get; set; }
         public double SighraCircumference { get; set; }
