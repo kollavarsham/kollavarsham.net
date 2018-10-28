@@ -6,10 +6,12 @@ branches:
 init:
   - cmd: git config --global core.autocrlf true
 before_build:
+  - cmd: choco install codecov
   - cmd: dotnet --version
   - cmd: dotnet restore
 build_script:
   - cmd: dotnet build
 test_script:
   - cmd: dotnet test --logger:Appveyor /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./coverage/lcov.info Kollavarsham.Net.Tests/Kollavarsham.Net.Tests.csproj
+  - cmd: codecov -f Kollavarsham.Net.Tests/coverage/lcov.info
 deploy: off
