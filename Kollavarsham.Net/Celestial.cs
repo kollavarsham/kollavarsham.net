@@ -6,8 +6,8 @@ namespace Kollavarsham.Net
 {
     public class Celestial
     {
-        private Planets Planets { get; }
-        private Yuga Yuga { get; }
+        public Planets Planets { get; }
+        public Yuga Yuga { get; }
 
         private double BackLastConjunctionAhargana { get; set; } = -1;
         private double BackNextConjunctionAhargana { get; set; } = -1;
