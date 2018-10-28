@@ -325,3 +325,4 @@ ASALocalRun/
 
 # custom section
 *.csproj.DotSettings
+coverage/
