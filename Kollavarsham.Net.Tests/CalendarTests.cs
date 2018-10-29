@@ -35,6 +35,70 @@ namespace Kollavarsham.Net.Tests
         }
 
         [Fact]
+        public void GetMasaNum_Should_Return_Correct_Results()
+        {
+            Calendar.GetMasaNum(31.3101877453024, 190.002232417937).Should().Be(1);
+            Calendar.GetMasaNum(42.2597957259723, 209.07961889886).Should().Be(1);
+            Calendar.GetMasaNum(59.2349729472294, 183.469749507872).Should().Be(1);
+            Calendar.GetMasaNum(62.5975972349908, 208.58681756282).Should().Be(2);
+            Calendar.GetMasaNum(80.4818781723799, 180.203508055438).Should().Be(2);
+            Calendar.GetMasaNum(121.1497130809087, 208.340416894636).Should().Be(4);
+            Calendar.GetMasaNum(320.8687779979979, 195.735990965544).Should().Be(10);
+            Calendar.GetMasaNum(131.3101877453024, 10.002232417937).Should().Be(4);
+            Calendar.GetMasaNum(242.2597957259723, 9.07961889886).Should().Be(8);
+            Calendar.GetMasaNum(359.2349729472294, 83.469749507872).Should().Be(11);
+            Calendar.GetMasaNum(62.5975972349908, 108.58681756282).Should().Be(2);
+            Calendar.GetMasaNum(142.8812491322719, 142.8812491322719).Should().Be(5);
+            Calendar.GetMasaNum(280.4818781723799, 180.203508055438).Should().Be(9);
+            Calendar.GetMasaNum(21.1497130809087, 108.340416894636).Should().Be(0);
+            Calendar.GetMasaNum(20.8687779979979, 286.735990965544).Should().Be(0);
+        }
+
+        [Fact]
+        public void GetSauraMasaAndSauraDivasa_Should_Return_Correct_Results()
+        {
+            _calendar.GetSauraMasaAndSauraDivasa(2299158.5, 0).SauraMasa.Should().Be(7);
+            _calendar.GetSauraMasaAndSauraDivasa(2299159.5, 0).SauraMasa.Should().Be(7);
+            _calendar.GetSauraMasaAndSauraDivasa(2299160.5, 0).SauraMasa.Should().Be(7);
+            _calendar.GetSauraMasaAndSauraDivasa(2299161.5, 0).SauraMasa.Should().Be(7);
+            _calendar.GetSauraMasaAndSauraDivasa(2361220.5, 0).SauraMasa.Should().Be(6);
+            _calendar.GetSauraMasaAndSauraDivasa(2361221.5, 0).SauraMasa.Should().Be(6);
+            _calendar.GetSauraMasaAndSauraDivasa(2361222.5, 0).SauraMasa.Should().Be(6);
+            _calendar.GetSauraMasaAndSauraDivasa(1721457.5, 0).SauraMasa.Should().Be(11);
+            _calendar.GetSauraMasaAndSauraDivasa(2456656.5, 0).SauraMasa.Should().Be(9);
+            _calendar.GetSauraMasaAndSauraDivasa(2456657.5, 0).SauraMasa.Should().Be(9);
+            _calendar.GetSauraMasaAndSauraDivasa(2455957.5, 0).SauraMasa.Should().Be(10);
+            _calendar.GetSauraMasaAndSauraDivasa(2456351.5, 0).SauraMasa.Should().Be(11);
+            _calendar.GetSauraMasaAndSauraDivasa(2455985.5, 0).SauraMasa.Should().Be(11);
+            _calendar.GetSauraMasaAndSauraDivasa(2433313.5, 0).SauraMasa.Should().Be(10);
+            _calendar.GetSauraMasaAndSauraDivasa(2299158.5, 0).SauraDivasa.Should().Be(6);
+            _calendar.GetSauraMasaAndSauraDivasa(2299159.5, 0).SauraDivasa.Should().Be(7);
+            _calendar.GetSauraMasaAndSauraDivasa(2299160.5, 0).SauraDivasa.Should().Be(8);
+            _calendar.GetSauraMasaAndSauraDivasa(2299161.5, 0).SauraDivasa.Should().Be(9);
+            _calendar.GetSauraMasaAndSauraDivasa(2361220.5, 0).SauraDivasa.Should().Be(4);
+            _calendar.GetSauraMasaAndSauraDivasa(2361221.5, 0).SauraDivasa.Should().Be(5);
+            _calendar.GetSauraMasaAndSauraDivasa(2361222.5, 0).SauraDivasa.Should().Be(6);
+            _calendar.GetSauraMasaAndSauraDivasa(1721457.5, 0).SauraDivasa.Should().Be(27);
+            _calendar.GetSauraMasaAndSauraDivasa(2456656.5, 0).SauraDivasa.Should().Be(19);
+            _calendar.GetSauraMasaAndSauraDivasa(2456657.5, 0).SauraDivasa.Should().Be(20);
+            _calendar.GetSauraMasaAndSauraDivasa(2455957.5, 0).SauraDivasa.Should().Be(21);
+            _calendar.GetSauraMasaAndSauraDivasa(2456351.5, 0).SauraDivasa.Should().Be(20);
+            _calendar.GetSauraMasaAndSauraDivasa(2455985.5, 0).SauraDivasa.Should().Be(19);
+            _calendar.GetSauraMasaAndSauraDivasa(2433313.5, 0).SauraDivasa.Should().Be(23);
+            _calendar.GetSauraMasaAndSauraDivasa(2313.5, 0).SauraDivasa.Should().Be(31);
+        }
+
+        [Fact]
+        public void FindSamkranti_Should_Return_Correct_Results()
+        {
+            _calendar.FindSamkranti(1868206, 1868207).Should().BeCloseTo(1868206.71761142, MathHelper.Epsilon);
+            _calendar.FindSamkranti(1868236, 1868237).Should().BeCloseTo(1868236.15636098, MathHelper.Epsilon);
+            _calendar.FindSamkranti(1868266, 1868267).Should().BeCloseTo(1868266.00000001, MathHelper.Epsilon);
+            _calendar.FindSamkranti(1721431, 1721432).Should().BeCloseTo(1721431.9425787, MathHelper.Epsilon);
+            _calendar.FindSamkranti(2299153, 2299154).Should().BeCloseTo(2299153.23922039, MathHelper.Epsilon);
+        }
+
+        [Fact]
         public void GetNaksatra_Should_Return_Correct_Results()
         {
             Calendar.GetNaksatra(167.084587116821).Saka.Should().Be("Hasta");
