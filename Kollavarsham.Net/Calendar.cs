@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Kollavarsham.Net.Dates;
 
 namespace Kollavarsham.Net
@@ -11,6 +12,17 @@ namespace Kollavarsham.Net
         private int _samkrantiDay;
         private int _samkrantiHour;
         private int _samkrantiMin;
+
+        private static readonly Dictionary<DayOfWeek, WeekDay> WeekDays = new Dictionary<DayOfWeek, WeekDay>
+        {
+            {DayOfWeek.Sunday, new WeekDay {DayOfWeek = DayOfWeek.Sunday, EN = "Monday", ML = "തിങ്കൾ"}},
+            {DayOfWeek.Monday, new WeekDay {DayOfWeek = DayOfWeek.Monday, EN = "Tuesday", ML = "ചൊവ്വ"}},
+            {DayOfWeek.Tuesday, new WeekDay {DayOfWeek = DayOfWeek.Tuesday, EN = "Wednesday", ML = "ബുധൻ"}},
+            {DayOfWeek.Wednesday, new WeekDay {DayOfWeek = DayOfWeek.Wednesday, EN = "Thursday", ML = "വ്യാഴം"}},
+            {DayOfWeek.Thursday, new WeekDay {DayOfWeek = DayOfWeek.Thursday, EN = "Friday", ML = "വെള്ളി"}},
+            {DayOfWeek.Friday, new WeekDay {DayOfWeek = DayOfWeek.Friday, EN = "Saturday", ML = "ശനി"}},
+            {DayOfWeek.Saturday, new WeekDay {DayOfWeek = DayOfWeek.Saturday, EN = "Sunday", ML = "ഞായർ"}},
+        };
 
         public Calendar(Celestial celestial)
         {
@@ -211,7 +223,7 @@ namespace Kollavarsham.Net
             return new JulianDate(year, month, day);
         }
 
-        private static double AharganaToJulianDay(double ahargana)
+        public static double AharganaToJulianDay(double ahargana)
         {
             return 588465.50 + ahargana;
         }
@@ -227,5 +239,30 @@ namespace Kollavarsham.Net
             masaNum = (masaNum + 12) % 12;
             return masaNum;
         }
+
+        public static string GetAdhimasa(double lastConjunctionLongitude, double nextConjunctionLongitude)
+        {
+            var n1 = MathHelper.Truncate(lastConjunctionLongitude / 30);
+            var n2 = MathHelper.Truncate(nextConjunctionLongitude / 30);
+            return Math.Abs(n1 - n2) < MathHelper.Epsilon ? "Adhika-" : "";
+        }
+
+        public static WeekDay JulianDayToWeekday(double julianDay)
+        {
+            var weekday = (DayOfWeek) (MathHelper.Truncate(julianDay + 0.5) % 7);
+            return WeekDays[weekday];
+        }
+
+        public static double JulianDayToAhargana(double julianDay)
+        {
+            return julianDay - 588465.50;
+        }
+    }
+
+    public class WeekDay
+    {
+        public DayOfWeek DayOfWeek { get; set; }
+        public string EN { get; set; }
+        public string ML { get; set; }
     }
 }

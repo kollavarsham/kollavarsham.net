@@ -35,6 +35,84 @@ namespace Kollavarsham.Net.Tests
         }
 
         [Fact]
+        public void JulianDayToAhargana_Should_Return_Correct_Results()
+        {
+            Calendar.JulianDayToAhargana(2299158.5).Should().Be(1710693);
+            Calendar.JulianDayToAhargana(2299159.5).Should().Be(1710694);
+            Calendar.JulianDayToAhargana(2299160.5).Should().Be(1710695);
+            Calendar.JulianDayToAhargana(2299161.5).Should().Be(1710696);
+            Calendar.JulianDayToAhargana(2361220.5).Should().Be(1772755);
+            Calendar.JulianDayToAhargana(2361221.5).Should().Be(1772756);
+            Calendar.JulianDayToAhargana(2361222.5).Should().Be(1772757);
+            Calendar.JulianDayToAhargana(1721457.5).Should().Be(1132992);
+            Calendar.JulianDayToAhargana(2456656.5).Should().Be(1868191);
+            Calendar.JulianDayToAhargana(2456657.5).Should().Be(1868192);
+            Calendar.JulianDayToAhargana(2455957.5).Should().Be(1867492);
+            Calendar.JulianDayToAhargana(2456351.5).Should().Be(1867886);
+            Calendar.JulianDayToAhargana(2455985.5).Should().Be(1867520);
+            Calendar.JulianDayToAhargana(2433313.5).Should().Be(1844848);
+        }
+
+        [Fact]
+        public void AharganaToJulianDay_Should_Return_Correct_Results()
+        {
+            Calendar.AharganaToJulianDay(1710693).Should().Be(2299158.5);
+            Calendar.AharganaToJulianDay(1710694).Should().Be(2299159.5);
+            Calendar.AharganaToJulianDay(1710695).Should().Be(2299160.5);
+            Calendar.AharganaToJulianDay(1710696).Should().Be(2299161.5);
+            Calendar.AharganaToJulianDay(1772755).Should().Be(2361220.5);
+            Calendar.AharganaToJulianDay(1772756).Should().Be(2361221.5);
+            Calendar.AharganaToJulianDay(1772757).Should().Be(2361222.5);
+            Calendar.AharganaToJulianDay(1132992).Should().Be(1721457.5);
+            Calendar.AharganaToJulianDay(1868191).Should().Be(2456656.5);
+            Calendar.AharganaToJulianDay(1868192).Should().Be(2456657.5);
+            Calendar.AharganaToJulianDay(1867492).Should().Be(2455957.5);
+            Calendar.AharganaToJulianDay(1867886).Should().Be(2456351.5);
+            Calendar.AharganaToJulianDay(1867520).Should().Be(2455985.5);
+            Calendar.AharganaToJulianDay(1844848).Should().Be(2433313.5);
+        }
+
+        [Fact]
+        public void JulianDayToWeekDay_Should_Return_Correct_Results()
+        {
+            Calendar.JulianDayToWeekday(2299158.5).EN.Should().Be("Wednesday");
+            Calendar.JulianDayToWeekday(2299159.5).EN.Should().Be("Thursday");
+            Calendar.JulianDayToWeekday(2299160.5).EN.Should().Be("Friday");
+            Calendar.JulianDayToWeekday(2299161.5).EN.Should().Be("Saturday");
+            Calendar.JulianDayToWeekday(2361220.5).EN.Should().Be("Wednesday");
+            Calendar.JulianDayToWeekday(2361221.5).EN.Should().Be("Thursday");
+            Calendar.JulianDayToWeekday(2361222.5).EN.Should().Be("Friday");
+            Calendar.JulianDayToWeekday(1721457.5).EN.Should().Be("Friday");
+            Calendar.JulianDayToWeekday(2456656.5).EN.Should().Be("Monday");
+            Calendar.JulianDayToWeekday(2456657.5).EN.Should().Be("Tuesday");
+            Calendar.JulianDayToWeekday(2455957.5).EN.Should().Be("Tuesday");
+            Calendar.JulianDayToWeekday(2456351.5).EN.Should().Be("Thursday");
+            Calendar.JulianDayToWeekday(2455985.5).EN.Should().Be("Tuesday");
+            Calendar.JulianDayToWeekday(2433313.5).EN.Should().Be("Wednesday");
+            Calendar.JulianDayToWeekday(2299158.5).ML.Should().Be("ബുധൻ");
+            Calendar.JulianDayToWeekday(2299159.5).ML.Should().Be("വ്യാഴം");
+            Calendar.JulianDayToWeekday(2299160.5).ML.Should().Be("വെള്ളി");
+            Calendar.JulianDayToWeekday(2299161.5).ML.Should().Be("ശനി");
+            Calendar.JulianDayToWeekday(2361220.5).ML.Should().Be("ബുധൻ");
+            Calendar.JulianDayToWeekday(2361221.5).ML.Should().Be("വ്യാഴം");
+            Calendar.JulianDayToWeekday(2361222.5).ML.Should().Be("വെള്ളി");
+            Calendar.JulianDayToWeekday(1721457.5).ML.Should().Be("വെള്ളി");
+            Calendar.JulianDayToWeekday(2456656.5).ML.Should().Be("തിങ്കൾ");
+            Calendar.JulianDayToWeekday(2456657.5).ML.Should().Be("ചൊവ്വ");
+            Calendar.JulianDayToWeekday(2455957.5).ML.Should().Be("ചൊവ്വ");
+            Calendar.JulianDayToWeekday(2456351.5).ML.Should().Be("വ്യാഴം");
+            Calendar.JulianDayToWeekday(2455985.5).ML.Should().Be("ചൊവ്വ");
+            Calendar.JulianDayToWeekday(2433313.5).ML.Should().Be("ബുധൻ");
+        }
+
+        [Fact]
+        public void GetAdhiMasa_Should_Return_Correct_Results()
+        {
+            Calendar.GetAdhimasa(116.77137869307474, 145.3418709668737).Should().Be("");
+            Calendar.GetAdhimasa(120.49240077447713, 148.98071378678225).Should().Be("Adhika-");
+        }
+
+        [Fact]
         public void GetMasaNum_Should_Return_Correct_Results()
         {
             Calendar.GetMasaNum(31.3101877453024, 190.002232417937).Should().Be(1);
